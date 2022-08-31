@@ -1,23 +1,15 @@
 import React, { Component } from "react";
-import "./style.css";
-// @ts-ignore
+import "./index.css";
 
 export default class ClockComponent extends Component {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      time: new Date(),
-    };
-  }
-  // timerId(){
-  //   this.setState({
-  //     time: new Date(),
-  //   });
-
-  // }
-
+  timerId: NodeJS.Timer | undefined;
+  state = {
+    time: new Date(),
+  };
 
   componentDidMount() {
+    console.log(this.state.time.getMinutes());
+    console.log(this.state.time);
 
     this.timerId = setInterval(() => {
       this.setState({
@@ -36,24 +28,18 @@ export default class ClockComponent extends Component {
         <div
           className="hour_hand"
           style={{
-            // @ts-ignore
-
             transform: `rotateZ(${this.state.time.getHours() * 30}deg)`,
           }}
         />
         <div
           className="min_hand"
           style={{
-            // @ts-ignore
-
             transform: `rotateZ(${this.state.time.getMinutes() * 6}deg)`,
           }}
         />
         <div
           className="sec_hand"
           style={{
-            // @ts-ignore
-
             transform: `rotateZ(${this.state.time.getSeconds() * 6}deg)`,
           }}
         />
